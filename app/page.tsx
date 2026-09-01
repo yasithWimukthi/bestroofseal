@@ -1,5 +1,31 @@
 import CategoryCard from "@/components/CategoryCard";
 import ProductCard from "@/components/ProductCard";
+import ComparisonTable, {
+    ComparisonProduct,
+} from "@/components/ComparisonTable";
+
+const comparisonProducts: ComparisonProduct[] = [
+    {
+        name: "Liquid Rubber",
+        bestFor: "Flat Roof",
+        rating: 4.9,
+    },
+    {
+        name: "Dicor Lap Sealant",
+        bestFor: "RV Roof",
+        rating: 4.8,
+    },
+    {
+        name: "Geocel 2300",
+        bestFor: "Metal Roof",
+        rating: 4.7,
+    },
+    {
+        name: "Flex Seal",
+        bestFor: "Budget Repairs",
+        rating: 4.6,
+    },
+];
 
 const featuredProducts = [
     {
@@ -68,7 +94,8 @@ export default function Home() {
                         work.
                     </p>
 
-                    <button className="mt-8 rounded-xl bg-green-600 px-7 py-4 text-lg font-semibold text-white transition hover:bg-green-700">
+                    <button
+                        className="mt-8 rounded-xl bg-green-600 px-7 py-4 text-lg font-semibold text-white transition hover:bg-green-700">
                         Browse Buying Guides
                     </button>
                 </div>
@@ -117,9 +144,9 @@ export default function Home() {
             <section className="bg-slate-100 py-20">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="max-w-2xl">
-      <span className="text-sm font-semibold uppercase tracking-wider text-green-600">
-        Editor's Choice
-      </span>
+                      <span className="text-sm font-semibold uppercase tracking-wider text-green-600">
+                        Editor&#39;s Choice
+                      </span>
 
                         <h2 className="mt-3 text-4xl font-bold text-slate-900">
                             Best Roof Sealants of 2026
@@ -137,6 +164,13 @@ export default function Home() {
                         ))}
                     </div>
                 </div>
+            </section>
+
+            <section className="mx-auto max-w-7xl px-6 py-20">
+                <ComparisonTable
+                    title="Best Roof Sealants Comparison"
+                    products={comparisonProducts}
+                />
             </section>
         </main>
     );
