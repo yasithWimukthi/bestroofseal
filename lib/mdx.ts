@@ -2,23 +2,31 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-const contentDirectory = path.join(process.cwd(), "content");
+const contentDir = path.join(process.cwd(), "content");
+
+export type Frontmatter = {
+    title: string;
+    description: string;
+    category: string;
+    author: string;
+    date: string;
+};
 
 export function getArticle(slug: string) {
-    const filePath = path.join(contentDirectory, `${slug}.mdx`);
+    const fullPath = path.join(contentDir, `${slug}.mdx`);
 
-    const fileContents = fs.readFileSync(filePath, "utf8");
+    const source = fs.readFileSync(fullPath, "utf8");
 
-    const { data, content } = matter(fileContents);
+    const { data, content } = matter(source);
 
     return {
-        frontmatter: data,
+        frontmatter: data as Frontmatter,
         content,
     };
 }
 
 export function getAllSlugs() {
-    const files = fs.readdirSync(contentDirectory);
+    const files = fs.readdirSync(contentDir);
 
     return files.map((file) => ({
         slug: file.replace(".mdx", ""),
