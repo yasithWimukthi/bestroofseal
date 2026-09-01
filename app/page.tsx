@@ -1,4 +1,52 @@
 import CategoryCard from "@/components/CategoryCard";
+import ProductCard from "@/components/ProductCard";
+
+const featuredProducts = [
+    {
+        badge: "Best Overall",
+        name: "Liquid Rubber Waterproof Sealant",
+        category: "Flat & Rubber Roofs",
+        rating: 4.9,
+        pros: [
+            "Excellent waterproofing",
+            "UV resistant finish",
+            "Easy DIY application",
+        ],
+    },
+    {
+        badge: "Best for RV",
+        name: "Dicor Self-Leveling Lap Sealant",
+        category: "RV Roofing",
+        rating: 4.8,
+        pros: [
+            "Self-leveling formula",
+            "Ideal for RV roofs",
+            "Long-lasting flexibility",
+        ],
+    },
+    {
+        badge: "Best Metal Roof",
+        name: "Geocel 2300 Sealant",
+        category: "Metal Roofing",
+        rating: 4.7,
+        pros: [
+            "Strong adhesion",
+            "Weather resistant",
+            "Professional-grade quality",
+        ],
+    },
+    {
+        badge: "Best Budget",
+        name: "Flex Seal Liquid Rubber",
+        category: "Roof Leak Repair",
+        rating: 4.6,
+        pros: [
+            "Budget friendly",
+            "Fast drying",
+            "Great for small leaks",
+        ],
+    },
+];
 
 export default function Home() {
     return (
@@ -62,6 +110,32 @@ export default function Home() {
                         description="Gutter guards, drainage systems and moisture prevention products."
                         href="/gutters"
                     />
+                </div>
+            </section>
+            {/* Featured Products */}
+
+            <section className="bg-slate-100 py-20">
+                <div className="mx-auto max-w-7xl px-6">
+                    <div className="max-w-2xl">
+      <span className="text-sm font-semibold uppercase tracking-wider text-green-600">
+        Editor's Choice
+      </span>
+
+                        <h2 className="mt-3 text-4xl font-bold text-slate-900">
+                            Best Roof Sealants of 2026
+                        </h2>
+
+                        <p className="mt-4 text-lg text-gray-600">
+                            Our highest-rated products based on durability, waterproofing and
+                            ease of application.
+                        </p>
+                    </div>
+
+                    <div className="mt-12 grid gap-8 lg:grid-cols-3">
+                        {featuredProducts.map((product) => (
+                            <ProductCard key={product.name} {...product} />
+                        ))}
+                    </div>
                 </div>
             </section>
         </main>
